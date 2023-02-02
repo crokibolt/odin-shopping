@@ -1,0 +1,14 @@
+.products-container {
+  display: grid;
+  column-gap: 2rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-flow: row;
+}
+
+img {
+  border-radius: 4%;
+}
+
+article {
+  text-align: center;
+}
