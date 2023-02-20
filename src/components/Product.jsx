@@ -4,16 +4,15 @@ import PropTypes from "prop-types";
 import "./product.css";
 
 function Product(props) {
-  const { product, handleAdd } = props;
+  const { product, index } = props;
   return (
     <article>
       <header>{product.name}</header>
       <img src={product.image} alt="" />
       <footer>
-        <h4>${product.price}</h4>
-        <button type="button" onClick={handleAdd}>
-          Add to cart
-        </button>
+        <a href={`/product/${index}`} role="button">
+          View Product
+        </a>
       </footer>
     </article>
   );
@@ -27,7 +26,7 @@ Product.propTypes = {
     price: PropTypes.number.isRequired,
     quantity: PropTypes.number.isRequired,
   }).isRequired,
-  handleAdd: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export default Product;

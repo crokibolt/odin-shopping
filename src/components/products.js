@@ -50,4 +50,10 @@ const products = [
   },
 ];
 
+const generateItem = (size, index) => {
+  const newItem = { ...products[index], size };
+  return newItem;
+};
+
 export default products;
+export { generateItem };

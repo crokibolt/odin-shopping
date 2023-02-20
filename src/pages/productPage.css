@@ -1,0 +1,41 @@
+img {
+  margin-bottom: 2rem;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+img {
+  grid-column: 1/4;
+  grid-row: 2/9;
+}
+
+.name {
+  grid-row: 1/2;
+  grid-column: 1/6;
+  text-align: center;
+}
+
+.price {
+  grid-column: 4/5;
+  grid-row: 4/5;
+  text-align: center;
+}
+.size {
+  grid-column: 4/6;
+  grid-row: 5/6;
+  text-align: center;
+}
+
+#size {
+  grid-column: 4/5;
+  grid-row: 6/7;
+}
+
+button {
+  grid-column: 4/6;
+  grid-row: 7/8;
+}

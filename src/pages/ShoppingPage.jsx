@@ -9,7 +9,7 @@ function ShoppingPage() {
       <div className="products-container">
         {products.map((element, i) => (
           // eslint-disable-next-line react/no-array-index-key
-          <Product product={element} key={i} />
+          <Product product={element} index={i} key={i} />
         ))}
       </div>
     </div>
