@@ -8,7 +8,9 @@ img {
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
-img {
+.productImageL {
+  max-width: 750px;
+  max-height: 534px;
   grid-column: 1/4;
   grid-row: 2/9;
 }
@@ -30,7 +32,7 @@ img {
   text-align: center;
 }
 
-#size {
+#sizeSelect {
   grid-column: 4/5;
   grid-row: 6/7;
 }

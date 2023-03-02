@@ -1,34 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
-import { generateItem } from "../components/products";
+// import { generateItem } from "../components/products";
 import "./productPage.css";
 
 function ProductPage({ products, handleAdd }) {
   const params = useParams();
   const product = products[params.productIndex];
   const array = [];
+
+  const [size, setSize] = useState(5);
+
   for (let i = 5; i <= 15; i++) {
     array.push(i);
   }
-  const sizeSelect = document.getElementById("size");
+
+  const handleChange = (e) => {
+    setSize(parseInt(e.target.value, 10));
+  };
+
   return (
     <div>
       <div className="product-grid">
         <h3 className="name">{product.name}</h3>
-        <img src={product.image} alt="" />
+        <img className="productImageL" src={product.image} alt="" />
         <h3 className="price">Price: ${product.price}</h3>
         <h5 className="size">Size</h5>
-        <select id="size">
+        <select value={size} onChange={handleChange} id="sizeSelect">
           {array.map((number, i) => (
             <option name={`option#${i}`} value={number}>
               {number}
             </option>
           ))}
         </select>
-        <button
-          type="button"
-          onClick={() => handleAdd(generateItem(sizeSelect.value, 1))}>
+        <button type="button" onClick={() => handleAdd(size, 1)}>
           Add to cart
         </button>
       </div>

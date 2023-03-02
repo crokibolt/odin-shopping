@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./navbar.css";
+import { NavLink } from "react-router-dom";
 
 function Navbar(props) {
   const { numberOfItems } = props;
@@ -13,16 +14,16 @@ function Navbar(props) {
       </ul>
       <ul>
         <li>
-          <a href="/">Homepage</a>
+          <NavLink to="/">Homepage</NavLink>
         </li>
         <li>
-          <a href="/shop">Shop</a>
+          <NavLink to="/shop">Shop</NavLink>
         </li>
         <li>
-          <a href="/cart">
+          <NavLink to="/cart">
             Cart
             <span className="cart-number">{numberOfItems}</span>
-          </a>
+          </NavLink>
         </li>
       </ul>
     </nav>

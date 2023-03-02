@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "@picocss/pico/css/pico.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
@@ -10,19 +10,33 @@ import products from "./components/products";
 
 function App() {
   const [cartItems, setItems] = useState([]);
+  const [quantity, setQuantity] = useState(0);
 
-  const addItem = (newItem) => {
+  const obtainQuantity = () => {
+    let i = 0;
+    let newQuantity = 0;
+
+    while (i < cartItems.length) {
+      newQuantity += cartItems[i].quantity;
+      i += 1;
+    }
+
+    return newQuantity;
+  };
+
+  const addItem = (size, index) => {
     setItems((prevItems) => {
       let found = false;
       let i = 0;
       let newItems = [];
+      const newItem = { ...products[index], size };
 
       while (!found && i < prevItems.length) {
         if (
           prevItems[i].name === newItem.name &&
           prevItems[i].size === newItem.size
         ) {
-          newItems = prevItems;
+          newItems = [...prevItems];
           newItems[i].quantity += 1;
           found = true;
         }
@@ -31,38 +45,30 @@ function App() {
       if (!found && i === prevItems.length) {
         newItems = [...prevItems, newItem];
       }
-
       return newItems;
     });
   };
 
-  const obtainTotal = () => {
-    let i = 0;
-    let total = 0;
+  useEffect(() => {
+    setQuantity(obtainQuantity());
+  });
 
-    while (i < cartItems.length) {
-      total += cartItems[i].quantity * cartItems[i].price;
-      i += 1;
-    }
+  // const obtainTotal = () => {
+  //   let i = 0;
+  //   let total = 0;
 
-    return total;
-  };
+  //   while (i < cartItems.length) {
+  //     total += cartItems[i].quantity * cartItems[i].price;
+  //     i += 1;
+  //   }
 
-  const obtainQuantity = () => {
-    const i = 0;
-    let quantity = 0;
-
-    while (i < cartItems.length) {
-      quantity += cartItems[i].quantity;
-    }
-
-    return quantity;
-  };
+  //   return total;
+  // };
 
   return (
-    <div className="container">
-      <Navbar numberOfItems={obtainQuantity()} />
-      <BrowserRouter>
+    <BrowserRouter>
+      <div className="container">
+        <Navbar numberOfItems={quantity} />
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/shop" element={<ShoppingPage />} />
@@ -72,8 +78,8 @@ function App() {
             element={<ProductPage products={products} handleAdd={addItem} />}
           />
         </Routes>
-      </BrowserRouter>
-    </div>
+      </div>
+    </BrowserRouter>
   );
 }
 

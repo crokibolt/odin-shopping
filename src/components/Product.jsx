@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import "./product.css";
 
 function Product(props) {
@@ -10,9 +11,9 @@ function Product(props) {
       <header>{product.name}</header>
       <img src={product.image} alt="" />
       <footer>
-        <a href={`/product/${index}`} role="button">
+        <Link to={`/product/${index}`} role="button">
           View Product
-        </a>
+        </Link>
       </footer>
     </article>
   );
