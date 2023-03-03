@@ -33,7 +33,9 @@ function ProductPage({ products, handleAdd }) {
             </option>
           ))}
         </select>
-        <button type="button" onClick={() => handleAdd(size, 1)}>
+        <button
+          type="button"
+          onClick={() => handleAdd(size, params.productIndex)}>
           Add to cart
         </button>
       </div>

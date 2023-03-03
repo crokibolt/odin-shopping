@@ -1,0 +1,12 @@
+.product-card {
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-card img {
+  max-width: 30%;
+}
+
+.product-card h3 {
+  margin: 0 auto;
+}

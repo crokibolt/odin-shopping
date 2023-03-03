@@ -1,4 +1,5 @@
 import React from "react";
+import { v4 } from "uuid";
 import Product from "../components/Product";
 import products from "../components/products";
 
@@ -8,8 +9,7 @@ function ShoppingPage() {
       <h2>Sneakers</h2>
       <div className="products-container">
         {products.map((element, i) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <Product product={element} index={i} key={i} />
+          <Product product={element} index={i} key={v4()} />
         ))}
       </div>
     </div>
