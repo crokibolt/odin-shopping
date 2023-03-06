@@ -9,9 +9,12 @@ import ProductPage from "./pages/ProductPage";
 import products from "./components/products";
 
 function App() {
-  const [cartItems, setItems] = useState([]);
-  const [quantity, setQuantity] = useState(0);
+  const loadedItems = localStorage.getItem("items")
+    ? JSON.parse(localStorage.getItem("items"))
+    : [];
 
+  const [cartItems, setItems] = useState(loadedItems);
+  const [quantity, setQuantity] = useState(0);
   const obtainQuantity = () => {
     let i = 0;
     let newQuantity = 0;
@@ -53,17 +56,58 @@ function App() {
     setQuantity(obtainQuantity());
   });
 
-  // const obtainTotal = () => {
-  //   let i = 0;
-  //   let total = 0;
+  const obtainTotal = () => {
+    let i = 0;
+    let total = 0;
 
-  //   while (i < cartItems.length) {
-  //     total += cartItems[i].quantity * cartItems[i].price;
-  //     i += 1;
-  //   }
+    while (i < cartItems.length) {
+      total += cartItems[i].quantity * cartItems[i].price;
+      i += 1;
+    }
 
-  //   return total;
-  // };
+    return total;
+  };
+
+  const removeItem = (e) => {
+    e.preventDefault();
+
+    setItems((prevItems) => {
+      const index = parseInt(e.target.dataset.index, 10);
+      const newItems = [...prevItems];
+
+      newItems.splice(index, 1);
+
+      return newItems;
+    });
+  };
+
+  const incrementQuantity = (e) => {
+    e.preventDefault();
+    setItems((prevItems) => {
+      const index = parseInt(e.target.dataset.index, 10);
+      const newItems = [...prevItems];
+
+      newItems[index].quantity += 1;
+
+      return newItems;
+    });
+  };
+
+  const decrementQuantity = (e) => {
+    e.preventDefault();
+    setItems((prevItems) => {
+      const index = parseInt(e.target.dataset.index, 10);
+      const newItems = [...prevItems];
+
+      newItems[index].quantity -= 1;
+
+      return newItems;
+    });
+  };
+
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(cartItems));
+  }, [cartItems]);
 
   return (
     <BrowserRouter>
@@ -72,7 +116,18 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/shop" element={<ShoppingPage />} />
-          <Route path="/cart" element={<CartPage cartItems={cartItems} />} />
+          <Route
+            path="/cart"
+            element={
+              <CartPage
+                cartItems={cartItems}
+                obtainTotal={obtainTotal}
+                handleIncrement={incrementQuantity}
+                handleDecrement={decrementQuantity}
+                handleRemove={removeItem}
+              />
+            }
+          />
           <Route
             path="/product/:productIndex"
             element={<ProductPage products={products} handleAdd={addItem} />}

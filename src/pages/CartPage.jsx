@@ -4,14 +4,49 @@ import { v4 } from "uuid";
 import CartProduct from "../components/CartProduct";
 
 function CartPage(props) {
-  const { cartItems } = props;
+  const {
+    cartItems,
+    obtainTotal,
+    handleIncrement,
+    handleDecrement,
+    handleRemove,
+  } = props;
 
   return (
-    <>
-      {cartItems.map((item, i) => (
-        <CartProduct product={item} index={i} key={v4()} />
-      ))}
-    </>
+    <div>
+      <table role="grid">
+        <thead>
+          <tr>
+            <th scope="col"> </th>
+            <th scope="col">Product</th>
+            <th scope="col">Size</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          {cartItems.map((item, i) => (
+            <CartProduct
+              product={item}
+              index={i}
+              key={v4()}
+              handleRemove={handleRemove}
+              handleDecrement={handleDecrement}
+              handleIncrement={handleIncrement}
+            />
+          ))}
+        </tbody>
+        <tfoot>
+          <tr>
+            <th scope="col"> </th>
+            <th scope="col"> </th>
+            <th scope="col"> </th>
+            <th scope="col"> Total: </th>
+            <th scope="col"> $ {obtainTotal()}</th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
   );
 }
 
@@ -26,6 +61,10 @@ CartPage.propTypes = {
       size: PropTypes.number.isRequired,
     })
   ).isRequired,
+  obtainTotal: PropTypes.func.isRequired,
+  handleRemove: PropTypes.func.isRequired,
+  handleDecrement: PropTypes.func.isRequired,
+  handleIncrement: PropTypes.func.isRequired,
 };
 
 export default CartPage;

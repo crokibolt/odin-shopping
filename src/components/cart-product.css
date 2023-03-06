@@ -1,12 +1,16 @@
-.product-card {
-  display: flex;
-  justify-content: space-between;
+tr img {
+  max-height: 14vh;
 }
 
-.product-card img {
-  max-width: 30%;
+tr a {
+  text-decoration: none;
 }
 
-.product-card h3 {
-  margin: 0 auto;
+.remove-btn {
+  font-size: 0.6rem;
+}
+
+a[disabled] {
+  pointer-events: none;
+  color: #e1e1e1;
 }
