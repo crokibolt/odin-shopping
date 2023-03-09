@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import PropTypes from "prop-types";
-import "./cart-product.css";
+import "../styles/cart-product.css";
 
 function CartProduct(props) {
   const { product, index, handleRemove, handleDecrement, handleIncrement } =

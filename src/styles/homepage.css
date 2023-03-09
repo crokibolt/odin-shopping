@@ -1,0 +1,11 @@
+.home-container {
+  height: 70vh;
+  width: 100%;
+  text-align: center;
+}
+
+.background {
+  width: 45vw;
+  /* margin: 0 7rem; */
+  z-index: -3;
+}

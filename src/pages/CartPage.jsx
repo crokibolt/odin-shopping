@@ -46,6 +46,7 @@ function CartPage(props) {
           </tr>
         </tfoot>
       </table>
+      <button type="button">Checkout</button>
     </div>
   );
 }

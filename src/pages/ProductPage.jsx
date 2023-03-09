@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
 // import { generateItem } from "../components/products";
-import "./productPage.css";
+import "../styles/productPage.css";
 
 function ProductPage({ products, handleAdd }) {
   const params = useParams();

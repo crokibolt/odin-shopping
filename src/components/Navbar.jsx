@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./navbar.css";
+import "../styles/navbar.css";
 import { NavLink } from "react-router-dom";
 
 function Navbar(props) {
@@ -9,7 +9,7 @@ function Navbar(props) {
     <nav>
       <ul>
         <li>
-          <h1>Shop</h1>
+          <h1>Sneaker Shop</h1>
         </li>
       </ul>
       <ul>
