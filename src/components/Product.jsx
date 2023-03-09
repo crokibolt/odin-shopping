@@ -11,7 +11,7 @@ function Product(props) {
       <header>{product.name}</header>
       <img src={product.image} alt="" />
       <footer>
-        <Link to={`/product/${index}`} role="button">
+        <Link to={`/odin-shopping/product/${index}`} role="button">
           View Product
         </Link>
       </footer>

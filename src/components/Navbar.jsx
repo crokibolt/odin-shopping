@@ -14,13 +14,13 @@ function Navbar(props) {
       </ul>
       <ul>
         <li>
-          <NavLink to="/">Homepage</NavLink>
+          <NavLink to="/odin-shopping/">Homepage</NavLink>
         </li>
         <li>
-          <NavLink to="/shop">Shop</NavLink>
+          <NavLink to="/odin-shopping/shop">Shop</NavLink>
         </li>
         <li>
-          <NavLink to="/cart">
+          <NavLink to="/odin-shopping/cart">
             Cart
             <span className="cart-number">{numberOfItems}</span>
           </NavLink>

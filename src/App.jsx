@@ -114,10 +114,10 @@ function App() {
       <div className="container">
         <Navbar numberOfItems={quantity} />
         <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/shop" element={<ShoppingPage />} />
+          <Route path="/odin-shopping/" element={<Homepage />} />
+          <Route path="/odin-shopping/shop" element={<ShoppingPage />} />
           <Route
-            path="/cart"
+            path="/odin-shopping/cart"
             element={
               <CartPage
                 cartItems={cartItems}
@@ -129,7 +129,7 @@ function App() {
             }
           />
           <Route
-            path="/product/:productIndex"
+            path="odin-shopping/product/:productIndex"
             element={<ProductPage products={products} handleAdd={addItem} />}
           />
         </Routes>
